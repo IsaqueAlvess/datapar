@@ -20,10 +20,10 @@ public class UsuarioEntity {
     @GeneratedValue( strategy = GenerationType.UUID)
     private UUID id;
 
-    @NotBlank( message = "Campo obrigatório")
+    @NotBlank( message = "Campo Nome obrigatório")
     private String name;
 
-    @NotBlank( message = "Campo obrigatório")
+    @NotBlank( message = "Campo Email obrigatório")
     @Email(message = "O campo deve conter um e-mail válido!")
     private String email;
 
