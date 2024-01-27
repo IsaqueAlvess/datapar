@@ -54,6 +54,5 @@ public class AvaliacaoController {
         return ResponseEntity.ok(json);
 
     }
-
-
+    
 }
