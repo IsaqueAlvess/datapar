@@ -1,4 +1,4 @@
-package com.datapar.gestao_satisfacao.modules.usuario.repository;
+package com.datapar.gestao_satisfacao.modules.usuario.repositories;
 
 import java.util.Optional;
 import java.util.UUID;

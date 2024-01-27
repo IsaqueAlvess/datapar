@@ -20,14 +20,16 @@ public class UsuarioEntity {
     @GeneratedValue( strategy = GenerationType.UUID)
     private UUID id;
 
-    @NotBlank
+    @NotBlank( message = "Campo obrigatório")
     private String name;
 
-    @NotBlank
+    @NotBlank( message = "Campo obrigatório")
     @Email(message = "O campo deve conter um e-mail válido!")
     private String email;
 
-    @Length( max = 250, message = "A observação deve conter no máximo 250 caracteres.")
-    private String observacoes;
+    @NotBlank( message = "Campo obrigatório")
+    @Length(min = 10, max = 100, message = "A senha deve conter entre 10 e 100 caracteres.")
+    private String password;
+    
 
 }

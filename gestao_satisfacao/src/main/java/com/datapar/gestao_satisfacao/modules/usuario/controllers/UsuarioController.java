@@ -1,12 +1,15 @@
 package com.datapar.gestao_satisfacao.modules.usuario.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.datapar.gestao_satisfacao.modules.usuario.entities.UsuarioEntity;
+import com.datapar.gestao_satisfacao.modules.usuario.services.CreateUsuario;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import jakarta.validation.Valid;
 
 /**
@@ -16,11 +19,19 @@ import jakarta.validation.Valid;
 @RequestMapping("/usuario")
 public class UsuarioController {
     
-    @PostMapping("/")
-    public void create(@Valid @RequestBody UsuarioEntity usuarioEntity){
-        System.out.println("Usuario");
-        System.out.println(usuarioEntity);
-        
-    }
+    @Autowired
+    private CreateUsuario createUsuario;
 
+    @PostMapping("/")
+    public ResponseEntity<Object> createUsuario(@Valid @RequestBody UsuarioEntity usuarioEntity){
+        
+        try {
+        
+            var result = this.createUsuario.execute(usuarioEntity);
+            return ResponseEntity.ok().body(result);   
+
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }        
+    }
 }
